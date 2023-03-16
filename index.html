@@ -1,0 +1,62 @@
+<!DOCTYPE html> <!-- 告訴瀏覽器使用的 HTML 版本 -->
+<html lang="en"> <!-- 設定語言為英文 -->
+<head> <!-- 網頁的標頭 -->
+    <meta charset="UTF-8"> <!-- 設定文件編碼為 UTF-8 -->
+    <meta name="viewport" content="width=device-width"> <!-- 設定大小為螢幕寬度 -->
+    <title>Foodpanda Waiting Page</title> <!-- 設定網頁標題 -->
+    <style>
+      html {
+        /* 使用指定字體，如果無法加載則依次使用後面的備選字體 */
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        height: 100%; /* 將 HTML 根元素高度設置為 100% */
+        background-color: #b01c56; /* 設置網頁背景顏色 */
+      }
+
+      h1{
+        padding: 20px 0; /* 設置上下 20 像素、左右 0 像素的內邊距 */
+        color: white; /* 設置字體顏色為白色 */
+        font-size: 60px; /* 設置字體大小為 60 像素 */
+        text-align: center; /* 將文字置中對齊 */
+        text-shadow: 3px 3px 1px black; /* 設置文字陰影，水平和垂直偏移量為 3 像素，模糊半徑為 1 像素 */
+      }
+
+      h2{
+        padding: 20px 0; /* 設置上下 20 像素、左右 0 像素的內邊距 */
+        color: white; /* 設置字體顏色為白色 */
+        font-size: 25px; /* 設置字體大小為 25 像素 */
+        text-align: center; /* 將文字置中對齊 */
+        text-shadow: 2px 2px 1px black; /* 設置文字陰影，水平和垂直偏移量為 2 像素，模糊半徑為 1 像素 */
+      }
+
+      img{
+        display: block; /* 設置圖片顯示為區塊元素 */
+        margin: 0 auto; /* 設置圖片水平置中對齊 */
+      }
+    </style>
+</head>
+<body> <!-- 網頁的主要內容 -->
+    <h1>Your food is died, please wait</h1> <!-- 網頁主標題 -->
+    <img src="foodpanda.jpg" alt="foodpanda"> <!-- 圖片標籤，顯示 foodpanda.jpg 的圖片 -->
+    <h2>You can try to refresh the page or close the page</h2> <!-- 次標題 -->
+    <Input id="refresh" type="Button" Value="refresh the page" onclick="window.location.reload()" style="width:120px; height:30px;"> <!-- 按鈕，當點擊時重新載入頁面 -->
+    <input id="close" type="button" value="close the page" style="width:120px; height:30px;"> <!-- 按鈕，當點擊時關閉頁面 -->
+    <script>
+      let refreshbtn = document.getElementById("refresh"); // 取得網頁上 id 為 "refresh" 的元素，並儲存到變數 refreshbtn 中
+
+      let closebtn = document.getElementById("close"); // 取得網頁上 id 為 "close" 的元素，並儲存到變數 closebtn 中
+
+      let parentWidth = refreshbtn.parentNode.clientWidth;
+      let btnWidth = (refreshbtn.clientWidth + closebtn.clientWidth) / 2 + 25;
+      refreshbtn.style.position = 'absolute';
+      closebtn.style.position = 'absolute';
+      refreshbtn.style.left = (parentWidth - btnWidth) / 2 + 'px';
+      closebtn.style.left = (parentWidth + btnWidth) / 2 + 'px';
+
+      closebtn.onclick = function (){ //當點擊按鈕時觸發以下動作
+        window.opener=null; // 設置開啟此網頁的原始網頁為 null
+        window.open("","_self"); // 開啟空白頁面
+        window.close(); // 關閉此網頁
+      }
+    </script>
+</body>
+</html> <!-- HTML 文件結束標籤 -->
